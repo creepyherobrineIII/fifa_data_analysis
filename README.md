@@ -25,11 +25,11 @@ The raw dataset contained nearly 19,000 player records and over 70 columns. Key 
 2. **Currency & Financial Conversions:** Stripped Euro symbols (`€`) and text multipliers (`M` for Millions, `K` for Thousands) from columns like `Value`, `Wage`, and `Release Clause`, converting them into proper numerical data types.
     - =IF(IFERROR(SEARCH("M"; [column]); 0) <> 0; TRIM(SUBSTITUTE(SUBSTITUTE([column];"€";""); "M"; ""))*1000000; IF(IFERROR(SEARCH("K"; [column]); 0) <> 0; TRIM(SUBSTITUTE(SUBSTITUTE([column];"€";""); "K"; ""))*1000; TRIM(SUBSTITUTE([column];"€";""))*1))
 
-3. **Physical Attribute Standardization:** 
-   * Converted mixed height formats (feet/inches and cm) strictly into numerical centimeters (`cm`).
+3. **Physical Attribute Standardization:** Converted mixed height formats (feet/inches and cm) strictly into numerical centimeters (`cm`).
     - =SWITCH()
 	- =TRIM(SUBSTITUTE([column]; "cm"; ""))
-   * Converted weight entries (lbs and kg) into uniform numerical kilograms (`kg`).
+    
+   Converted weight entries (lbs and kg) into uniform numerical kilograms (`kg`).
     - =IF(IFERROR(SEARCH("lbs"; [column]); 0) <> 0; ROUND(TRIM(SUBSTITUTE([column]; "lbs"; "")) / 2,205;0); [column])
 	- =TRIM(SUBSTITUTE([column]; "kgs"; ""))
 
