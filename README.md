@@ -47,20 +47,20 @@ The raw dataset contained nearly 19,000 player records and over 70 columns. Key 
 
 ---
 
-## 📊 Exploratory Data Analysis (EDA) & Key Insights {IN PROGRESS}
+## 📊 Exploratory Data Analysis (EDA) & Key Insights 
 Using the cleaned data model in Power BI, the analysis answered several core business and scouting questions:
 
-* **Market Value vs. Wages:** Highlighted "hidden gems"—undervalued players operating on low weekly wages relative to their high overall skill ratings and market worth.
-* **Age vs. Potential:** Mapped player peaks, contrasting current overall ratings (`OVA`) against potential ceilings (`POT`) to pinpoint high-potential wonderkids.
-* **Club Dominance:** Evaluated top-heavy team distributions, total squad market valuations, and average player ratings across premier leagues.
-* **Physical & Technical Profiles:** Explored correlations between player positions, physical traits (height/weight), and specialized attribute ratings (shooting, pacing, defending).
+* **Club Dominance:** Evaluated top valued teams, total market valuation, and average player wages across every major league.
+* **Market Value vs. Potential:** Highlighted "hidden gems"— younger players who have high growth potential (current overall - potential) and are under valued.
+* **Player position market distribution:** Analysing which player positions are currently dominating the market.
+* **Player Attribute & Squad Analysis:** Evaluated squad depth for each club manager to identify areas in which teams lack players, alongside player attribute analysis.
 
 ---
 
-## 🖥️ Power BI Dashboard Preview {TO-DO}
+## 🖥️ Power BI Dashboard Preview
 *(Insert screenshots or a brief structural description of your Power BI report pages here)*
-* **Page 1: Player Overview & Scouting Matrix** — Filterable search card for players, comparing Overall Rating, Potential, Market Value, and Wage.
-* **Page 2: Financial & Club Analysis** — Deep dive into club wage bills, squad sizes, and total market capitalization.
+* **Page 1: Global Market Overview** — Showing total Market Value, average player Wage, player position market distribution and top 10 clubs by total value.
+* **Page 2: Scouting Analysis** — Deep dive into club wage bills, squad sizes, and total market capitalization.
 
 ---
 
