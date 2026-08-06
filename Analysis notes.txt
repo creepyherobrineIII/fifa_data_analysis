@@ -1,0 +1,98 @@
+Netflix Data Cleaning 
+
+1. Filled in missing values (Flyign fortress by William)
+	- Country, title, date, rating ,etc
+	
+Fifa Cleaning Data
+1. Standardized data
+	- Removed whitespace and made columns proper (name, longname)
+	- Converted lbs to kgs, removed units from cols
+		+ =IF(IFERROR(SEARCH("lbs"; [column]); 0) <> 0; ROUND(TRIM(SUBSTITUTE([column]; "lbs"; "")) / 2,205;0); [column])
+		+ =TRIM(SUBSTITUTE([column]; "kgs"; ""))
+	- Converted height from imperial to metric
+		+ =SWITCH()
+		+ =TRIM(SUBSTITUTE([column]; "cm"; ""))
+	- Convert column data types to appropriate types (age, overall, pot, height, weight)
+	- Getting rid of currency and money quantity symbols (Euros and  K,M (thousands, millions)
+		+ =IF(IFERROR(SEARCH("M"; [column]); 0) <> 0; TRIM(SUBSTITUTE(SUBSTITUTE([column];"€";""); "M"; ""))*1000000; 
+			IF(IFERROR(SEARCH("K"; [column]); 0) <> 0; TRIM(SUBSTITUTE(SUBSTITUTE([column];"€";""); "K"; ""))*1000; TRIM(SUBSTITUTE([column];"€";""))*1))
+	- Removing Star Symbol from rating columns
+2. Cleaning Data
+	- Added "Player Status" Column, to get rid of mixed values in contract column, alongside splitting contract start and end years
+		+ =IF(IFERROR(SEARCH("On Loan"; [column]); 0) <> 0; "On Loan"; IF(IFERROR(SEARCH("Free"; [column]); 0) <> 0; "Free"; "Permanent"))
+	- Getting rid of loan columns (loan dates are incohesive)
+	- Changing loan player years to 0 (for calculations)
+		+ =IF(LEN(TRIM(K2)) <> 4; 0; K2)
+	
+
+Complaints with dataset
+	- Loan dates are incomprehensible - The start date and end date are the same. 
+	
+	
+================================ PLAYERS TO STAY =================================================
+Jonjo Shelvey
+Miguel Almiron
+Dwight Gayle
+Allan Saint Maximin
+Joelinton
+Callum Wilson
+
+================================ PLAYERS TO GO =================================================
+Federico Fernandez - CB (Age)
+Henri Saviet - RW (Age & Overall)
+Andy Carroll
+
+================================= Loan ===========================================
+Jack Young - CAM
+Elliot Anderson - CAM (train to be LM)
+Yannick Touré - ST
+================================ Find ============================================
+================================ Players and Free Agents =====================================
+RB - Rafael Di Leonardo (RB, RM) OVR: 79
+		+ DEF:76, PHY:67, PAC:78, DRI:78, PAS:69
+   - Sergey Petrov (RB, ) OVR: 76
+		+ DEF:73, PHY:67, PAC:76, DRI:71, PAS:67
+   - Loic Nego (RB, ) OVR: 74
+		+ DEF:66, PHY:69, PAC:85, DRI:75, PAS:65
+   
+LB - Welington Kaue Dano Nascimento (LB, LM) OVR: 81
+		+ DEF:75, PHY:74, PAC:79, DRI:78, PAS:76
+   - Haitam Aleesami OVR:73
+		+ DEF:67, PHY:72, PAC:76, DRI:70, PAS:68
+   - Mauro Evidio Nerez (LB, ) OVR: 80
+		+ DEF:76, PHY:74, PAC:79, DRI:78, PAS:75
+   
+CB - Juan Everton Mestres De Mesquita (CB, CDM) OVR: 81
+		+ DEF:82, PHY:80, PAC:71, DRI:62, PAS:57
+   - Egidio Maestre Schetino (CB, ) OVR: 80
+		+ DEF:82, PHY:76, PAC:80, DRI:65, PAS:56
+   - Milos Degenek (CB, ) OVR: 73
+		+ DEF:, PHY:69, PAC:85, DRI:75, PAS:65
+
+REMEMBER TO ADD AGE TO THE TABLE
+================================ Wonder Kids =====================================
+RB - Josha Vagnoman (RB, LM, LB) OVR: 69
+		+ DEF:63, PHY:72, PAC:87, DRI:68, PAS:60
+	- Ki-Jana Hoever(RB, CB) OVR: 63
+		+ DEF:61, PHY:62, PAC:71, DRI:64, PAS:67
+	- Devyn Rensch (RB, CB, CDM) OVR: 65 
+		+ DEF:66, PHY:64, PAC:77, DRI:66, PAS:57
+
+LB - Nuno Alexandre Tavares Mendes (LB, LWB, LM) OVR: 72 
+		+ DEF:68, PHY:68, PAC:86, DRI:69, PAS:61
+   - Felix Agu (LB, RB, LM) OVR: 70
+		+ DEF:61, PHY:59, PAC:87, DRI:75, PAS:60
+   - Luca Netz (LB, LM) OVR: 63
+		+ DEF:62, PHY:61, PAC:69, DRI:59, PAS:44
+  
+CB - Leonidas Stergiou (CB) OVR: 67
+		+ DEF:67, PHY:72, PAC:65, DRI:49, PAS:46
+   - Bright Arrey-Mbi (CB, LB) OVR: 60
+		+ DEF:58, PHY:68, PAC:68, DRI:54, PAS:45
+
+People at decent current overalls, can play multiple positions, within budget
+and have high potentials.
+================================ Move ============================================
+Paul - LB
+Deandre Yed -RB
+Allan Saint Striker
